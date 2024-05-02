@@ -54,6 +54,7 @@ class Tour(models.Model):
     updated = models.DateTimeField(auto_now=True)
     start_date = models.DateTimeField(verbose_name='Начало тура')
     end_date = models.DateTimeField(verbose_name='Конец тура')
+    is_active = models.BooleanField(default=True, verbose_name='Доступен')
     photo = models.ImageField(
         upload_to=f'tour/{title}/%Y/%m/', blank=True)
 

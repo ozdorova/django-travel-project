@@ -50,7 +50,7 @@ class TourProgrammInLine(admin.StackedInline):
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
     fields = [
-        'title', 'slug', 'description', 'tariff', 'place', 'start_date', 'end_date', 'photo'
+        'title', 'slug', 'description', 'tariff', 'place', 'start_date', 'end_date', 'is_active', 'photo'
     ]
     list_display = [
         'title', 'place', 'created'
