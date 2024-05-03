@@ -5,9 +5,15 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['komrad_travel.ru']
 
 
 ADMINS = [
     ('Mikhail B.', 'haxboxmiha@gmail.com'),
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+}

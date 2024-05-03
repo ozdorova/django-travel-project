@@ -21,5 +21,6 @@ from tours.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/tourlist/', TourAPIList.as_view()),
-    path('api/v1/tourlist/<int:pk>/', TourAPIList.as_view()),
+    path('api/v1/tourlist/<int:pk>/', TourAPIUpdate.as_view()),
+    path('api/v1/tourdetail/<int:pk>/', TourAPIDetailView.as_view()),
 ]

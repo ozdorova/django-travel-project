@@ -12,9 +12,21 @@ from django.forms import model_to_dict
 #     queryset = Tour.objects.all()
 #     serializer_class = TourSerializer
 class TourAPIList(generics.ListCreateAPIView):
+    """GET POST"""
     queryset = Tour.objects.all()
     serializer_class = TourSerializer
 
+
+class TourAPIUpdate(generics.UpdateAPIView):
+    """PUT PATCH"""
+    queryset = Tour.objects.all()
+    serializer_class = TourSerializer
+
+
+class TourAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """CRUD"""
+    queryset = Tour.objects.all()
+    serializer_class = TourSerializer
 
 ############################ Пример ############################
 # class TourAPIView(APIView):
