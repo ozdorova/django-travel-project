@@ -9,6 +9,7 @@ class PublishedManager(models.Manager):
 
 class Tariff(models.Model):
     """Тарифы проведения тура"""
+    # Поля
     title = models.CharField(max_length=50, verbose_name='Название тарифа')
     slug = models.SlugField(max_length=50)
     conditions = models.TextField(verbose_name='Условия тарифа')
@@ -29,6 +30,7 @@ class Tariff(models.Model):
 
 class Place(models.Model):
     """Место, места, область или регион проведения тура"""
+    # Поля
     city = models.CharField(max_length=100, verbose_name='Город', blank=True)
     slug = models.SlugField(max_length=100)
     region = models.CharField(max_length=200, verbose_name='Область/Регион')
@@ -53,7 +55,7 @@ class Tour(models.Model):
         DRAFT = (0, 'Не активен')
         PUBLISHED = (1, 'Активен')
 
-    # поля
+    # Поля
     title = models.CharField(max_length=250, verbose_name='Название тура')
     slug = models.SlugField(max_length=250)
     description = models.TextField()
@@ -66,10 +68,11 @@ class Tour(models.Model):
     start_date = models.DateTimeField(verbose_name='Начало тура')
     end_date = models.DateTimeField(verbose_name='Конец тура')
     is_active = models.BooleanField(
-        default=Status.PUBLISHED, verbose_name='Доступен', choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)))
+        default=Status.PUBLISHED, verbose_name='Статус', choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)))
     photo = models.ImageField(
         upload_to=f'tour/%Y/%m/', blank=True)
 
+    # Менеджеры
     active_tours = PublishedManager()
     objects = models.Manager()
 
@@ -91,6 +94,7 @@ class Tour(models.Model):
 
 class TourProgramm(models.Model):
     """Программа проведения тура"""
+    # Поля
     title = models.CharField(max_length=250, verbose_name='Название')
     tour = models.ForeignKey(Tour, related_name='tour_programm',
                              on_delete=models.CASCADE, verbose_name='Тур')
