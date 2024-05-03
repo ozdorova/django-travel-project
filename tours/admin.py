@@ -31,7 +31,7 @@ class TariffAdmin(admin.ModelAdmin):
 @admin.register(TourProgramm)
 class TourProgrammAdmin(admin.ModelAdmin):
     fields = [
-        'title', 'tour', 'order', 'description', 'start_date', 'end_date', 'photo',
+        'title', 'tour', 'order', 'description', 'photo',
     ]
 
     list_display = [
@@ -59,6 +59,7 @@ class TourAdmin(admin.ModelAdmin):
     search_fields = [
         'title', 'place'
     ]
+    save_on_top = True
 
     prepopulated_fields = {'slug': ('title', )}
-    inline = TourProgrammInLine
+    inlines = [TourProgrammInLine]

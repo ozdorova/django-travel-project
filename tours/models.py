@@ -15,7 +15,7 @@ class Tariff(models.Model):
 
     class Meta:
         ordering = [
-            'title'
+            'id'
         ]
 
         verbose_name = 'Тариф'
@@ -56,7 +56,7 @@ class Tour(models.Model):
     end_date = models.DateTimeField(verbose_name='Конец тура')
     is_active = models.BooleanField(default=True, verbose_name='Доступен')
     photo = models.ImageField(
-        upload_to=f'tour/{title}/%Y/%m/', blank=True)
+        upload_to=f'tour/%Y/%m/', blank=True)
 
     class Meta:
         ordering = [
@@ -72,12 +72,14 @@ class Tour(models.Model):
 
 class TourProgramm(models.Model):
     """Программа проведения тура"""
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length=250, verbose_name='Название')
     tour = models.ForeignKey(Tour, related_name='tour_programm',
-                             on_delete=models.CASCADE)
-    order = fields.Odredfield(blank=True, for_fields=['tour'])
+                             on_delete=models.CASCADE, verbose_name='Тур')
+    order = fields.Odredfield(blank=True, for_fields=[
+                              'tour'], verbose_name='День(Автоматический порядок)')
     description = models.TextField(verbose_name='Описание')
-    photo = models.ImageField(upload_to=f'tour/{tour}/', blank=True)
+    photo = models.ImageField(
+        upload_to=f'tour/%Y/%m/', blank=True)
 
     class Meta:
         ordering = [
