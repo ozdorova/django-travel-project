@@ -6,29 +6,43 @@ from .serializers import TourSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.forms import model_to_dict
+from rest_framework import viewsets, mixins
 
 
+class TourViewSet(mixins.CreateModelMixin,  # Создание
+                  mixins.RetrieveModelMixin,  # Выделение
+                  mixins.UpdateModelMixin,  # Обновление
+                  mixins.DestroyModelMixin,  # Удаление
+                  mixins.ListModelMixin,  # Список всех записей
+                  viewsets.GenericViewSet):  # viewsets.ModelViewSet
+    """ModelViewSet всех доступный туров"""
+    queryset = Tour.active_tours.all()
+    serializer_class = TourSerializer
+
+
+############################ Пример ############################
 # class TourAPIView(generics.ListAPIView):
 #     queryset = Tour.objects.all()
 #     serializer_class = TourSerializer
-class TourAPIList(generics.ListCreateAPIView):
-    """GET POST"""
-    queryset = Tour.objects.all()
-    serializer_class = TourSerializer
+
+# class TourAPIList(generics.ListCreateAPIView):
+#     """GET POST"""
+#     queryset = Tour.objects.all()
+#     serializer_class = TourSerializer
 
 
-class TourAPIUpdate(generics.UpdateAPIView):
-    """PUT PATCH"""
-    queryset = Tour.objects.all()
-    serializer_class = TourSerializer
+# class TourAPIUpdate(generics.UpdateAPIView):
+#     """PUT PATCH"""
+#     queryset = Tour.objects.all()
+#     serializer_class = TourSerializer
 
 
-class TourAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
-    """CRUD"""
-    queryset = Tour.objects.all()
-    serializer_class = TourSerializer
+# class TourAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+#     """CRUD"""
+#     queryset = Tour.objects.all()
+#     serializer_class = TourSerializer
 
-############################ Пример ############################
+
 # class TourAPIView(APIView):
 #     """Базовое представлене API для всех туров"""
 

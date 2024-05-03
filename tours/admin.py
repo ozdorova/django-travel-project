@@ -50,14 +50,17 @@ class TourProgrammInLine(admin.StackedInline):
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
     fields = [
-        'title', 'slug', 'description', 'tariff', 'place', 'start_date', 'end_date', 'is_active', 'photo'
+        'title', 'slug', 'description', 'tariff', 'place', 'start_date', 'end_date', 'is_active', 'photo',
     ]
     list_display = [
-        'title', 'place', 'created'
+        'title', 'is_active', 'place', 'created',
     ]
 
     search_fields = [
-        'title', 'place'
+        'title',
+    ]
+    list_editable = [
+        'is_active'
     ]
     save_on_top = True
 

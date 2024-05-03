@@ -2,6 +2,11 @@ from django.db import models
 from . import fields
 
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=Tour.Status.PUBLISHED)
+
+
 class Tariff(models.Model):
     """Тарифы проведения тура"""
     title = models.CharField(max_length=50, verbose_name='Название тарифа')
@@ -43,6 +48,12 @@ class Place(models.Model):
 
 class Tour(models.Model):
     """Тур"""
+    class Status(models.IntegerChoices):
+        """Статус тура"""
+        DRAFT = (0, 'Не активен')
+        PUBLISHED = (1, 'Активен')
+
+    # поля
     title = models.CharField(max_length=250, verbose_name='Название тура')
     slug = models.SlugField(max_length=250)
     description = models.TextField()
@@ -54,13 +65,21 @@ class Tour(models.Model):
     updated = models.DateTimeField(auto_now=True)
     start_date = models.DateTimeField(verbose_name='Начало тура')
     end_date = models.DateTimeField(verbose_name='Конец тура')
-    is_active = models.BooleanField(default=True, verbose_name='Доступен')
+    is_active = models.BooleanField(
+        default=Status.PUBLISHED, verbose_name='Доступен', choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)))
     photo = models.ImageField(
         upload_to=f'tour/%Y/%m/', blank=True)
+
+    active_tours = PublishedManager()
+    objects = models.Manager()
 
     class Meta:
         ordering = [
             '-created'
+        ]
+
+        indexes = [
+            models.Index(fields=['-created'])
         ]
 
         verbose_name = 'Тур'
