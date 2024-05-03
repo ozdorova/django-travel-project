@@ -2,19 +2,43 @@ import io
 
 from rest_framework import serializers
 from traitlets import default
-from .models import Tour
+from .models import Tour, TourProgramm, Tariff, Place
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 
 
+class PlaceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Place
+        fields = '__all__'
+
+
+class TariffSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tariff
+        fields = [
+            'title', 'conditions', 'price'
+        ]
+
+
+class TourProgrammSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TourProgramm
+        fields = '__all__'
+
+
 class TourSerializer(serializers.ModelSerializer):
+    # programm = TourProgrammSerializer(many=True)
+    tariff = TariffSerializer(many=True)
+    place = PlaceSerializer()
+
     class Meta:
         model = Tour
-        fields = '__all__'
-        # fields = [
-        #     'title', 'slug', 'description', 'tariff', 'place',
-        #     'created', 'start_date', 'end_date', 'is_active', 'photo'
-        # ]
+        # fields = '__all__'
+        fields = [
+            'id', 'title', 'slug', 'description', 'place',
+            'created', 'start_date', 'end_date', 'is_active', 'photo', 'tariff',
+        ]
 
 
 ############################## Примеры ##############################
