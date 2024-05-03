@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tours.views import TourAPIView
+from tours.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/tourlist/', TourAPIView.as_view()),
-    path('api/v1/tourlist/<int:pk>/', TourAPIView.as_view()),
+    path('api/v1/tourlist/', TourAPIList.as_view()),
+    path('api/v1/tourlist/<int:pk>/', TourAPIList.as_view()),
 ]
