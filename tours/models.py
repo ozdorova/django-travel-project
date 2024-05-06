@@ -1,4 +1,5 @@
 from django.db import models
+
 from . import fields
 
 
@@ -92,11 +93,11 @@ class Tour(models.Model):
         return self.title
 
 
-class TourProgramm(models.Model):
+class Programm(models.Model):
     """Программа проведения тура"""
     # Поля
     title = models.CharField(max_length=250, verbose_name='Название')
-    tour = models.ForeignKey(Tour, related_name='tour_programm',
+    tour = models.ForeignKey(Tour, related_name='programm',
                              on_delete=models.CASCADE, verbose_name='Тур')
     order = fields.Odredfield(blank=True, for_fields=[
                               'tour'], verbose_name='День(Автоматический порядок)')

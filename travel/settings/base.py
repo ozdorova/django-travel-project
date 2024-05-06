@@ -10,12 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
+import locale
 
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+locale.setlocale(locale.LC_TIME, "ru_RU.utf-8")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -95,14 +97,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
-
+LANGUAGE_CODE = 'ru-RU'
 TIME_ZONE = 'Europe/Moscow'
-
 USE_I18N = True
-
+USE_L10N = False
 USE_TZ = True
 
+# DATE_FORMAT = 'd E Y'
+# DATETIME_FORMAT = 'd E Y, H:i'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

@@ -1,7 +1,8 @@
 import io
 
 from rest_framework import serializers
-from .models import Tour, TourProgramm, Tariff, Place
+
+from .models import Tour, Programm, Tariff, Place
 # from rest_framework.renderers import JSONRenderer
 # from rest_framework.parsers import JSONParser
 
@@ -10,7 +11,9 @@ class PlaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Place
         fields = [
-            'city', 'region', 'country',
+            'city',
+            'region',
+            'country',
         ]
 
 
@@ -18,27 +21,50 @@ class TariffSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tariff
         fields = [
-            'title', 'conditions', 'price'
+            'title',
+            'conditions',
+            'price'
         ]
 
 
-class TourProgrammSerializer(serializers.ModelSerializer):
+class ProgrammSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TourProgramm
-        fields = '__all__'
+        model = Programm
+        fields = [
+            'title',
+            'order',
+            'description',
+            'photo',
+        ]
 
 
 class TourSerializer(serializers.ModelSerializer):
-    # programm = TourProgrammSerializer(many=True)
     tariff = TariffSerializer(many=True)
     place = PlaceSerializer()
 
     class Meta:
         model = Tour
         fields = [
-            'id', 'title', 'slug', 'description', 'place',
-            'created', 'start_date', 'end_date', 'is_active', 'photo', 'tariff',
+            'id',
+            'title',
+            'slug',
+            'description',
+            'place',
+            'created',
+            'start_date',
+            'end_date',
+            'is_active',
+            'photo',
+            'tariff',
+            # 'programm',
         ]
+
+
+class TourDetailSerializer(TourSerializer):
+    programm = ProgrammSerializer(many=True)
+
+    class Meta(TourSerializer.Meta):
+        fields = TourSerializer.Meta.fields + ['programm']
 
 
 ############################## Примеры ##############################

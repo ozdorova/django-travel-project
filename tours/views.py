@@ -1,12 +1,8 @@
-from django.core.serializers import serialize
-from django.shortcuts import render
-from rest_framework import generics
-from .models import Tour
-from .serializers import TourSerializer
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.forms import model_to_dict
+
 from rest_framework import viewsets, mixins
+
+from .models import Tour
+from .serializers import TourSerializer, TourDetailSerializer
 
 
 class TourViewSet(mixins.CreateModelMixin,  # Создание
@@ -15,12 +11,24 @@ class TourViewSet(mixins.CreateModelMixin,  # Создание
                   mixins.DestroyModelMixin,  # Удаление
                   mixins.ListModelMixin,  # Список всех записей
                   viewsets.GenericViewSet):  # viewsets.ModelViewSet
-    """ModelViewSet всех доступный туров"""
+    """ModelViewSet всех доступных туров"""
     queryset = Tour.active_tours.all()
     serializer_class = TourSerializer
 
+    actions = ['retrieve', 'create', 'update']
+
+    def get_serializer_class(self):
+        if self.action in self.actions:
+            return TourDetailSerializer
+        return super().get_serializer_class()
 
 ############################ Пример ############################
+
+# from django.core.serializers import serialize
+# from django.shortcuts import render
+# from rest_framework import generics
+# from rest_framework.views import APIView
+# from rest_framework.response import Response
 # class TourAPIView(generics.ListAPIView):
 #     queryset = Tour.objects.all()
 #     serializer_class = TourSerializer

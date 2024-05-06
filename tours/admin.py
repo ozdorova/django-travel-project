@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Tour, TourProgramm, Place, Tariff
-# Register your models here.
+
+from .models import Tour, Programm, Place, Tariff
 
 
 @admin.register(Place)
@@ -28,7 +28,7 @@ class TariffAdmin(admin.ModelAdmin):
     ]
 
 
-@admin.register(TourProgramm)
+@admin.register(Programm)
 class TourProgrammAdmin(admin.ModelAdmin):
     fields = [
         'title', 'tour', 'order', 'description', 'photo',
@@ -44,7 +44,7 @@ class TourProgrammAdmin(admin.ModelAdmin):
 
 
 class TourProgrammInLine(admin.StackedInline):
-    model = TourProgramm
+    model = Programm
 
 
 @admin.register(Tour)
