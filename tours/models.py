@@ -1,4 +1,5 @@
 from django.db import models
+from pytils.translit import slugify
 
 from . import fields
 
@@ -20,6 +21,11 @@ class Tariff(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+
     class Meta:
         ordering = [
             'id'
@@ -39,6 +45,14 @@ class Place(models.Model):
 
     def __str__(self):
         return f'{self.city}, {self.region}, {self.country}'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            if self.city:
+                self.slug = slugify(f'{self.city}-{self.region}')
+            else:
+                self.slug = slugify(f'{self.region}-{self.country}')
+        return super().save(*args, **kwargs)
 
     class Meta:
         ordering = [
@@ -66,8 +80,8 @@ class Tour(models.Model):
         Place, related_name='tour_place', on_delete=models.PROTECT, verbose_name='Места')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    start_date = models.DateTimeField(verbose_name='Начало тура')
-    end_date = models.DateTimeField(verbose_name='Конец тура')
+    start_date = models.DateTimeField(verbose_name='Начало тура', blank=True)
+    end_date = models.DateTimeField(verbose_name='Конец тура', blank=True)
     is_active = models.BooleanField(
         default=Status.PUBLISHED, verbose_name='Статус', choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)))
     photo = models.ImageField(
@@ -76,6 +90,14 @@ class Tour(models.Model):
     # Менеджеры
     active_tours = PublishedManager()
     objects = models.Manager()
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
     class Meta:
         ordering = [
@@ -88,9 +110,6 @@ class Tour(models.Model):
 
         verbose_name = 'Тур'
         verbose_name_plural = 'Туры'
-
-    def __str__(self):
-        return self.title
 
 
 class Programm(models.Model):

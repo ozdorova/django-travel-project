@@ -6,22 +6,19 @@ from .models import Tour, Programm, Place, Tariff
 @admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
     fields = [
-        'city', 'slug', 'region', 'country'
+        'city', 'region', 'country'
     ]
-    prepopulated_fields = {'slug': ('city', 'region')}
 
 
 @admin.register(Tariff)
 class TariffAdmin(admin.ModelAdmin):
     fields = [
-        'title', 'slug', 'conditions', 'price'
+        'title', 'conditions', 'price'
     ]
 
     list_display = [
         'title', 'price'
     ]
-
-    prepopulated_fields = {'slug': ('title', )}
 
     list_editable = [
         'price'
@@ -50,7 +47,7 @@ class TourProgrammInLine(admin.StackedInline):
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
     fields = [
-        'title', 'slug', 'description', 'tariff', 'place', 'start_date', 'end_date', 'is_active', 'photo',
+        'title', 'description', 'tariff', 'place', 'start_date', 'end_date', 'is_active', 'photo',
     ]
     list_display = [
         'title', 'is_active', 'place', 'created',
@@ -64,5 +61,4 @@ class TourAdmin(admin.ModelAdmin):
     ]
     save_on_top = True
 
-    prepopulated_fields = {'slug': ('title', )}
     inlines = [TourProgrammInLine]
