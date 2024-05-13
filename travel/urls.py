@@ -25,6 +25,8 @@ router.register(r'tour', TourViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(router.urls)),
-    # path('api/v1/tourlist/', TourViewSet.as_view({'get': 'list'})),
-    # path('api/v1/tourlist/<int:pk>/', TourViewSet.as_view({'put': 'update'})),
+    # path('api/v1/tourlist/',
+    #      TourViewSet.as_view({'get': 'list'}), name='tour_list'),
+    # path('api/v1/tourlist/<int:pk>/',
+    #      TourViewSet.as_view({'post': 'create'}), name='tour_detail'),
 ]
