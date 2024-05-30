@@ -32,6 +32,7 @@ class TourTest(TourSetupTestCase):
         )
 
     def test_tours(self):
+        # ИСПРАВИТЬ
         stolica, naukograd = Tour.objects.all()
         self.assertEqual(
             stolica.title, 'Первый наукоград'

@@ -1,0 +1,242 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADMINS	travel/settings/prod.py	/^ADMINS = [$/;"	v
+ALLOWED_HOSTS	travel/settings/dev.py	/^ALLOWED_HOSTS = ['*']$/;"	v
+ALLOWED_HOSTS	travel/settings/prod.py	/^ALLOWED_HOSTS = ['komrad_travel.ru']$/;"	v
+APITestCase	tours/tests/test_serializer.py	/^from rest_framework.test import APITestCase$/;"	i
+AUTH_PASSWORD_VALIDATORS	travel/settings/base.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+AppConfig	tours/apps.py	/^from django.apps import AppConfig$/;"	i
+BASE_DIR	travel/settings/base.py	/^BASE_DIR = Path(__file__).resolve().parent.parent.parent$/;"	v
+DATABASES	travel/settings/dev.py	/^DATABASES = {$/;"	v
+DEBUG	travel/settings/dev.py	/^DEBUG = True$/;"	v
+DEBUG	travel/settings/prod.py	/^DEBUG = False$/;"	v
+DEFAULT_AUTO_FIELD	travel/settings/base.py	/^DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'$/;"	v
+DRAFT	tours/models.py	/^        DRAFT = (0, "Не активен")$/;"	v	class:Tour.Status
+INSTALLED_APPS	travel/settings/base.py	/^INSTALLED_APPS = [$/;"	v
+INTERNAL_IPS	travel/settings/base.py	/^INTERNAL_IPS = [$/;"	v
+LANGUAGE_CODE	travel/settings/base.py	/^LANGUAGE_CODE = 'ru-RU'$/;"	v
+MEDIA_ROOT	travel/settings/base.py	/^MEDIA_ROOT = BASE_DIR \/ 'media'$/;"	v
+MEDIA_URL	travel/settings/base.py	/^MEDIA_URL = 'media\/'$/;"	v
+MIDDLEWARE	travel/settings/base.py	/^MIDDLEWARE = [$/;"	v
+Meta	tours/models.py	/^    class Meta:$/;"	c	class:Place
+Meta	tours/models.py	/^    class Meta:$/;"	c	class:Programm
+Meta	tours/models.py	/^    class Meta:$/;"	c	class:Tariff
+Meta	tours/models.py	/^    class Meta:$/;"	c	class:Tour
+Meta	tours/serializers.py	/^    class Meta(TourSerializer.Meta):$/;"	c	class:TourDetailSerializer
+Meta	tours/serializers.py	/^    class Meta:$/;"	c	class:PlaceSerializer
+Meta	tours/serializers.py	/^    class Meta:$/;"	c	class:ProgrammSerializer
+Meta	tours/serializers.py	/^    class Meta:$/;"	c	class:TariffSerializer
+Meta	tours/serializers.py	/^    class Meta:$/;"	c	class:TourSerializer
+Migration	tours/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	c
+Migration	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^class Migration(migrations.Migration):$/;"	c
+ObjectDoesNotExist	tours/fields.py	/^from django.core.exceptions import ObjectDoesNotExist$/;"	i
+Odredfield	tours/fields.py	/^class Odredfield(models.PositiveBigIntegerField):$/;"	c
+PUBLISHED	tours/models.py	/^        PUBLISHED = (1, "Активен")$/;"	v	class:Tour.Status
+Path	travel/settings/base.py	/^from pathlib import Path$/;"	i
+Place	tours/admin.py	/^from .models import Tour, Programm, Place, Tariff$/;"	i
+Place	tours/models.py	/^class Place(models.Model):$/;"	c
+Place	tours/serializers.py	/^from .models import Place, Programm, Tariff, Tour$/;"	i
+Place	tours/tests/setup.py	/^from ..models import Tour, Tariff, Place$/;"	i
+Place	tours/tests/test_model.py	/^from ..models import Tour, Tariff, Place$/;"	i
+PlaceAdmin	tours/admin.py	/^class PlaceAdmin(admin.ModelAdmin):$/;"	c
+PlaceSerializer	tours/serializers.py	/^class PlaceSerializer(serializers.ModelSerializer):$/;"	c
+Programm	tours/admin.py	/^from .models import Tour, Programm, Place, Tariff$/;"	i
+Programm	tours/models.py	/^class Programm(models.Model):$/;"	c
+Programm	tours/serializers.py	/^from .models import Place, Programm, Tariff, Tour$/;"	i
+ProgrammSerializer	tours/serializers.py	/^class ProgrammSerializer(serializers.ModelSerializer):$/;"	c
+PublishedManager	tours/models.py	/^class PublishedManager(models.Manager):$/;"	c
+REST_FRAMEWORK	travel/settings/dev.py	/^REST_FRAMEWORK = {$/;"	v
+REST_FRAMEWORK	travel/settings/prod.py	/^REST_FRAMEWORK = {$/;"	v
+ROOT_URLCONF	travel/settings/base.py	/^ROOT_URLCONF = 'travel.urls'$/;"	v
+SECRET_KEY	travel/settings/base.py	/^SECRET_KEY = os.environ.get('SECRET_KEY')$/;"	v
+STATIC_URL	travel/settings/base.py	/^STATIC_URL = 'static\/'$/;"	v
+Status	tours/models.py	/^    class Status(models.IntegerChoices):$/;"	c	class:Tour
+TEMPLATES	travel/settings/base.py	/^TEMPLATES = [$/;"	v
+TIME_ZONE	travel/settings/base.py	/^TIME_ZONE = 'Europe\/Moscow'$/;"	v
+Tariff	tours/admin.py	/^from .models import Tour, Programm, Place, Tariff$/;"	i
+Tariff	tours/models.py	/^class Tariff(models.Model):$/;"	c
+Tariff	tours/serializers.py	/^from .models import Place, Programm, Tariff, Tour$/;"	i
+Tariff	tours/tests/setup.py	/^from ..models import Tour, Tariff, Place$/;"	i
+Tariff	tours/tests/test_model.py	/^from ..models import Tour, Tariff, Place$/;"	i
+TariffAdmin	tours/admin.py	/^class TariffAdmin(admin.ModelAdmin):$/;"	c
+TariffSerializer	tours/serializers.py	/^class TariffSerializer(serializers.ModelSerializer):$/;"	c
+TestCase	tours/tests/setup.py	/^from django.test import TestCase$/;"	i
+Tour	tours/admin.py	/^from .models import Tour, Programm, Place, Tariff$/;"	i
+Tour	tours/models.py	/^class Tour(models.Model):$/;"	c
+Tour	tours/serializers.py	/^from .models import Place, Programm, Tariff, Tour$/;"	i
+Tour	tours/tests/setup.py	/^from ..models import Tour, Tariff, Place$/;"	i
+Tour	tours/tests/test_model.py	/^from ..models import Tour, Tariff, Place$/;"	i
+Tour	tours/views.py	/^from .models import Tour$/;"	i
+TourAdmin	tours/admin.py	/^class TourAdmin(admin.ModelAdmin):$/;"	c
+TourDetailSerializer	tours/serializers.py	/^class TourDetailSerializer(TourSerializer):$/;"	c
+TourDetailSerializer	tours/views.py	/^from .serializers import TourSerializer, TourDetailSerializer$/;"	i
+TourProgrammAdmin	tours/admin.py	/^class TourProgrammAdmin(admin.ModelAdmin):$/;"	c
+TourProgrammInLine	tours/admin.py	/^class TourProgrammInLine(admin.StackedInline):$/;"	c
+TourSerializer	tours/serializers.py	/^class TourSerializer(serializers.ModelSerializer):$/;"	c
+TourSerializer	tours/views.py	/^from .serializers import TourSerializer, TourDetailSerializer$/;"	i
+TourSetupTestCase	tours/tests/setup.py	/^class TourSetupTestCase(TestCase):$/;"	c
+TourSetupTestCase	tours/tests/test_model.py	/^from .setup import TourSetupTestCase$/;"	i
+TourTest	tours/tests/test_model.py	/^class TourTest(TourSetupTestCase):$/;"	c
+TourViewSet	tours/views.py	/^                  viewsets.GenericViewSet):  # viewsets.ModelViewSet$/;"	c
+ToursConfig	tours/apps.py	/^class ToursConfig(AppConfig):$/;"	c
+USE_I18N	travel/settings/base.py	/^USE_I18N = True$/;"	v
+USE_L10N	travel/settings/base.py	/^USE_L10N = False$/;"	v
+USE_TZ	travel/settings/base.py	/^USE_TZ = True$/;"	v
+WSGI_APPLICATION	travel/settings/base.py	/^WSGI_APPLICATION = 'travel.wsgi.application'$/;"	v
+__init__	tours/fields.py	/^    def __init__(self, for_fields=None, *args, **kwargs):$/;"	m	class:Odredfield
+__str__	tours/models.py	/^    def __str__(self):$/;"	m	class:Place	file:
+__str__	tours/models.py	/^    def __str__(self):$/;"	m	class:Programm	file:
+__str__	tours/models.py	/^    def __str__(self):$/;"	m	class:Tariff	file:
+__str__	tours/models.py	/^    def __str__(self):$/;"	m	class:Tour	file:
+actions	tours/views.py	/^    actions = ['retrieve', 'create', 'update']$/;"	v	class:TourViewSet
+active_tours	tours/models.py	/^    active_tours = PublishedManager()$/;"	v	class:Tour
+admin	tours/admin.py	/^from django.contrib import admin$/;"	i
+admin	travel/urls.py	/^from django.contrib import admin$/;"	i
+application	travel/asgi.py	/^application = get_asgi_application()$/;"	v
+application	travel/wsgi.py	/^application = get_wsgi_application()$/;"	v
+choices	tours/models.py	/^        choices=Status.choices,$/;"	v	class:Tour.Status
+city	tours/models.py	/^    city = models.CharField(max_length=100, verbose_name="Город", blank=True)$/;"	v	class:Place
+conditions	tours/models.py	/^    conditions = models.TextField(verbose_name="Условия тарифа")$/;"	v	class:Tariff
+country	tours/models.py	/^    country = models.CharField(max_length=200, verbose_name="Страна")$/;"	v	class:Place
+created	tours/models.py	/^    created = models.DateTimeField(auto_now_add=True)$/;"	v	class:Tour
+db	tours/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+db	tours/migrations/0001_initial.py	/^import django.db.models.manager$/;"	i
+default	tours/models.py	/^        default=Status.PUBLISHED,$/;"	v	class:Tour.Status
+default_auto_field	tours/apps.py	/^    default_auto_field = 'django.db.models.BigAutoField'$/;"	v	class:ToursConfig
+deletion	tours/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+dependencies	tours/migrations/0001_initial.py	/^    dependencies = [$/;"	v	class:Migration
+dependencies	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^    dependencies = [$/;"	v	class:Migration
+description	tours/models.py	/^    description = models.TextField()$/;"	v	class:Tour
+description	tours/models.py	/^    description = models.TextField(verbose_name="Описание")$/;"	v	class:Programm
+django	tours/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+django	tours/migrations/0001_initial.py	/^import django.db.models.manager$/;"	i
+end_date	tours/models.py	/^    end_date = models.DateTimeField(verbose_name="Конец тура", blank=True)$/;"	v	class:Tour
+execute_from_command_line	manage.py	/^        from django.core.management import execute_from_command_line$/;"	i
+field	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^            field=models.DateTimeField(blank=True, verbose_name='Конец тура'),$/;"	v	class:Migration
+field	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^            field=models.DateTimeField(blank=True, verbose_name='Начало тура'),$/;"	v	class:Migration
+fields	tours/admin.py	/^    fields = [$/;"	v	class:PlaceAdmin
+fields	tours/admin.py	/^    fields = [$/;"	v	class:TariffAdmin
+fields	tours/admin.py	/^    fields = [$/;"	v	class:TourAdmin
+fields	tours/admin.py	/^    fields = [$/;"	v	class:TourProgrammAdmin
+fields	tours/migrations/0001_initial.py	/^            fields=[$/;"	v	class:Migration
+fields	tours/migrations/0001_initial.py	/^import tours.fields$/;"	i
+fields	tours/models.py	/^from . import fields$/;"	i
+fields	tours/serializers.py	/^        fields = TourSerializer.Meta.fields + ["programm"]$/;"	v	class:TourDetailSerializer.Meta
+fields	tours/serializers.py	/^        fields = ["title", "conditions", "price"]$/;"	v	class:TariffSerializer.Meta
+fields	tours/serializers.py	/^        fields = [$/;"	v	class:PlaceSerializer.Meta
+fields	tours/serializers.py	/^        fields = [$/;"	v	class:ProgrammSerializer.Meta
+fields	tours/serializers.py	/^        fields = [$/;"	v	class:TourSerializer.Meta
+get_asgi_application	travel/asgi.py	/^from django.core.asgi import get_asgi_application$/;"	i
+get_queryset	tours/models.py	/^    def get_queryset(self):$/;"	m	class:PublishedManager
+get_serializer_class	tours/views.py	/^    def get_serializer_class(self):$/;"	m	class:TourViewSet
+get_tz_time	tours/tests/setup.py	/^from ..utils.funcs import get_tz_time$/;"	i
+get_tz_time	tours/utils/funcs.py	/^def get_tz_time(date: str):$/;"	f
+get_wsgi_application	travel/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	i
+include	travel/urls.py	/^from django.urls import include, path$/;"	i
+index	tours/migrations/0001_initial.py	/^            index=models.Index(fields=['-created'], name='tours_tour_created_e89256_idx'),$/;"	v	class:Migration
+indexes	tours/models.py	/^        indexes = [$/;"	v	class:Place.Meta
+indexes	tours/models.py	/^        indexes = [$/;"	v	class:Tour.Meta
+initial	tours/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
+inlines	tours/admin.py	/^    inlines = [TourProgrammInLine]$/;"	v	class:TourAdmin
+is_active	tours/models.py	/^    is_active = models.BooleanField($/;"	v	class:Tour
+list_display	tours/admin.py	/^    list_display = [$/;"	v	class:TariffAdmin
+list_display	tours/admin.py	/^    list_display = [$/;"	v	class:TourAdmin
+list_display	tours/admin.py	/^    list_display = [$/;"	v	class:TourProgrammAdmin
+list_editable	tours/admin.py	/^    list_editable = [$/;"	v	class:TariffAdmin
+list_editable	tours/admin.py	/^    list_editable = [$/;"	v	class:TourAdmin
+locale	travel/settings/base.py	/^import locale$/;"	i
+main	manage.py	/^def main():$/;"	f
+manager	tours/migrations/0001_initial.py	/^import django.db.models.manager$/;"	i
+managers	tours/migrations/0001_initial.py	/^            managers=[$/;"	v	class:Migration
+migrations	tours/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+migrations	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^from django.db import migrations, models$/;"	i
+mixins	tours/views.py	/^from rest_framework import viewsets, mixins$/;"	i
+model	tours/admin.py	/^    model = Programm$/;"	v	class:TourProgrammInLine
+model	tours/serializers.py	/^        model = Place$/;"	v	class:PlaceSerializer.Meta
+model	tours/serializers.py	/^        model = Programm$/;"	v	class:ProgrammSerializer.Meta
+model	tours/serializers.py	/^        model = Tariff$/;"	v	class:TariffSerializer.Meta
+model	tours/serializers.py	/^        model = Tour$/;"	v	class:TourSerializer.Meta
+model_name	tours/migrations/0001_initial.py	/^            model_name='tour',$/;"	v	class:Migration
+model_name	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^            model_name='tour',$/;"	v	class:Migration
+models	tours/fields.py	/^from django.db import models$/;"	i
+models	tours/migrations/0001_initial.py	/^from django.db import migrations, models$/;"	i
+models	tours/migrations/0001_initial.py	/^import django.db.models.deletion$/;"	i
+models	tours/migrations/0001_initial.py	/^import django.db.models.manager$/;"	i
+models	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^from django.db import migrations, models$/;"	i
+models	tours/models.py	/^from django.db import models$/;"	i
+name	tours/apps.py	/^    name = 'tours'$/;"	v	class:ToursConfig
+name	tours/migrations/0001_initial.py	/^            name='Place',$/;"	v	class:Migration
+name	tours/migrations/0001_initial.py	/^            name='Programm',$/;"	v	class:Migration
+name	tours/migrations/0001_initial.py	/^            name='Tariff',$/;"	v	class:Migration
+name	tours/migrations/0001_initial.py	/^            name='Tour',$/;"	v	class:Migration
+name	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^            name='end_date',$/;"	v	class:Migration
+name	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^            name='start_date',$/;"	v	class:Migration
+objects	tours/models.py	/^    objects = models.Manager()$/;"	v	class:Tour
+operations	tours/migrations/0001_initial.py	/^    operations = [$/;"	v	class:Migration
+operations	tours/migrations/0002_alter_tour_end_date_alter_tour_start_date.py	/^    operations = [$/;"	v	class:Migration
+options	tours/migrations/0001_initial.py	/^            options={$/;"	v	class:Migration
+order	tours/models.py	/^    order = fields.Odredfield($/;"	v	class:Programm
+ordering	tours/models.py	/^        ordering = ["-created"]$/;"	v	class:Tour.Meta
+ordering	tours/models.py	/^        ordering = ["city", "region"]$/;"	v	class:Place.Meta
+ordering	tours/models.py	/^        ordering = ["id"]$/;"	v	class:Tariff.Meta
+ordering	tours/models.py	/^        ordering = ["order"]$/;"	v	class:Programm.Meta
+os	manage.py	/^import os$/;"	i
+os	travel/asgi.py	/^import os$/;"	i
+os	travel/settings/base.py	/^import os$/;"	i
+os	travel/settings/prod.py	/^import os$/;"	i
+os	travel/wsgi.py	/^import os$/;"	i
+path	travel/urls.py	/^from django.urls import include, path$/;"	i
+photo	tours/models.py	/^    photo = models.ImageField(upload_to="tour\/%Y\/%m\/", blank=True)$/;"	v	class:Programm
+photo	tours/models.py	/^    photo = models.ImageField(upload_to="tour\/%Y\/%m\/", blank=True)$/;"	v	class:Tour
+place	tours/models.py	/^    place = models.ForeignKey($/;"	v	class:Tour
+place	tours/serializers.py	/^    place = PlaceSerializer()$/;"	v	class:TourSerializer
+pre_save	tours/fields.py	/^    def pre_save(self, model_instance, add):$/;"	m	class:Odredfield
+price	tours/models.py	/^    price = models.DecimalField($/;"	v	class:Tariff
+programm	tours/serializers.py	/^    programm = ProgrammSerializer(many=True)$/;"	v	class:TourDetailSerializer
+queryset	tours/views.py	/^    queryset = Tour.active_tours.all()$/;"	v	class:TourViewSet
+region	tours/models.py	/^    region = models.CharField(max_length=200, verbose_name="Область\/Регион")$/;"	v	class:Place
+reverse	tours/tests/test_serializer.py	/^from django.urls import reverse$/;"	i
+router	travel/urls.py	/^router = routers.SimpleRouter()$/;"	v
+routers	travel/urls.py	/^from rest_framework import routers$/;"	i
+save	tours/models.py	/^    def save(self, *args, **kwargs):$/;"	m	class:Place
+save	tours/models.py	/^    def save(self, *args, **kwargs):$/;"	m	class:Tariff
+save	tours/models.py	/^    def save(self, *args, **kwargs):$/;"	m	class:Tour
+save_on_top	tours/admin.py	/^    save_on_top = True$/;"	v	class:TourAdmin
+search_fields	tours/admin.py	/^    search_fields = [$/;"	v	class:TourAdmin
+search_fields	tours/admin.py	/^    search_fields = [$/;"	v	class:TourProgrammAdmin
+serializer_class	tours/views.py	/^    serializer_class = TourSerializer$/;"	v	class:TourViewSet
+serializers	tours/serializers.py	/^from rest_framework import serializers$/;"	i
+setUp	tours/tests/setup.py	/^    def setUp(self):$/;"	m	class:TourSetupTestCase
+slug	tours/models.py	/^    slug = models.SlugField(max_length=100)$/;"	v	class:Place
+slug	tours/models.py	/^    slug = models.SlugField(max_length=250)$/;"	v	class:Tour
+slug	tours/models.py	/^    slug = models.SlugField(max_length=50)$/;"	v	class:Tariff
+slugify	tours/models.py	/^from pytils.translit import slugify$/;"	i
+start_date	tours/models.py	/^    start_date = models.DateTimeField(verbose_name="Начало тура", blank=True)$/;"	v	class:Tour
+sys	manage.py	/^import sys$/;"	i
+tariff	tours/models.py	/^    tariff = models.ManyToManyField($/;"	v	class:Tour
+tariff	tours/serializers.py	/^    tariff = TariffSerializer(many=True)$/;"	v	class:TourSerializer
+test_places	tours/tests/test_model.py	/^    def test_places(self):$/;"	m	class:TourTest
+test_tariffs	tours/tests/test_model.py	/^    def test_tariffs(self):$/;"	m	class:TourTest
+test_tours	tours/tests/test_model.py	/^    def test_tours(self):$/;"	m	class:TourTest
+timezone	tours/utils/funcs.py	/^from django.utils import timezone$/;"	i
+title	tours/models.py	/^    title = models.CharField(max_length=250, verbose_name="Название тура")$/;"	v	class:Tour
+title	tours/models.py	/^    title = models.CharField(max_length=250, verbose_name="Название")$/;"	v	class:Programm
+title	tours/models.py	/^    title = models.CharField(max_length=50, verbose_name="Название тарифа")$/;"	v	class:Tariff
+tour	tours/models.py	/^    tour = models.ForeignKey($/;"	v	class:Programm
+tours	tours/migrations/0001_initial.py	/^import tours.fields$/;"	i
+updated	tours/models.py	/^    updated = models.DateTimeField(auto_now=True)$/;"	v	class:Tour
+urlpatterns	travel/urls.py	/^urlpatterns = [$/;"	v
+verbose_name	tours/models.py	/^        verbose_name = "Место"$/;"	v	class:Place.Meta
+verbose_name	tours/models.py	/^        verbose_name = "Программа тура"$/;"	v	class:Programm.Meta
+verbose_name	tours/models.py	/^        verbose_name = "Тариф"$/;"	v	class:Tariff.Meta
+verbose_name	tours/models.py	/^        verbose_name = "Тур"$/;"	v	class:Tour.Meta
+verbose_name	tours/models.py	/^        verbose_name="Статус",$/;"	v	class:Tour.Status
+verbose_name_plural	tours/models.py	/^        verbose_name_plural = "Места"$/;"	v	class:Place.Meta
+verbose_name_plural	tours/models.py	/^        verbose_name_plural = "Программы тура"$/;"	v	class:Programm.Meta
+verbose_name_plural	tours/models.py	/^        verbose_name_plural = "Тарифы"$/;"	v	class:Tariff.Meta
+verbose_name_plural	tours/models.py	/^        verbose_name_plural = "Туры"$/;"	v	class:Tour.Meta
+viewsets	tours/views.py	/^from rest_framework import viewsets, mixins$/;"	i

@@ -1,8 +1,9 @@
-import io
+# import io
 
 from rest_framework import serializers
 
-from .models import Tour, Programm, Tariff, Place
+from .models import Place, Programm, Tariff, Tour
+
 # from rest_framework.renderers import JSONRenderer
 # from rest_framework.parsers import JSONParser
 
@@ -11,30 +12,26 @@ class PlaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Place
         fields = [
-            'city',
-            'region',
-            'country',
+            "city",
+            "region",
+            "country",
         ]
 
 
 class TariffSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tariff
-        fields = [
-            'title',
-            'conditions',
-            'price'
-        ]
+        fields = ["title", "conditions", "price"]
 
 
 class ProgrammSerializer(serializers.ModelSerializer):
     class Meta:
         model = Programm
         fields = [
-            'title',
-            'order',
-            'description',
-            'photo',
+            "title",
+            "order",
+            "description",
+            "photo",
         ]
 
 
@@ -45,17 +42,17 @@ class TourSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tour
         fields = [
-            'id',
-            'title',
-            'slug',
-            'description',
-            'place',
-            'created',
-            'start_date',
-            'end_date',
-            'is_active',
-            'photo',
-            'tariff',
+            "id",
+            "title",
+            "slug",
+            "description",
+            "place",
+            "created",
+            "start_date",
+            "end_date",
+            "is_active",
+            "photo",
+            "tariff",
             # 'programm',
         ]
 
@@ -64,7 +61,7 @@ class TourDetailSerializer(TourSerializer):
     programm = ProgrammSerializer(many=True)
 
     class Meta(TourSerializer.Meta):
-        fields = TourSerializer.Meta.fields + ['programm']
+        fields = TourSerializer.Meta.fields + ["programm"]
 
 
 ############################## Примеры ##############################

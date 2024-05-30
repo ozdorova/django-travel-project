@@ -11,7 +11,16 @@ ipython = "*"
 djangorestframework = "*"
 pytils = "*"
 
-[dev-packages]
-
 [requires]
 python_version = "3.11"
+
+[dev-packages]
+pep8 = "*"
+pylint = "*"
+autopep8 = "*"
+
+[scripts]
+runserver = 'python manage.py runserver'
+make_migrations = 'python manage.py makemigrations'
+migrate = 'python manage.py migrate'
+
