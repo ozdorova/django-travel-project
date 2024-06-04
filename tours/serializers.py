@@ -46,7 +46,6 @@ class ProgrammSerializer(serializers.ModelSerializer):
 
 
 class TourSerializer(serializers.ModelSerializer):
-    tariffs = TariffSerializer(many=True)
     places = PlaceSerializer(many=True)
     owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
@@ -64,13 +63,13 @@ class TourSerializer(serializers.ModelSerializer):
             'end_date',
             'is_active',
             'photo',
-            'tariffs',
             # 'programm',
         ]
 
 
 class TourDetailSerializer(TourSerializer):
     programm = ProgrammSerializer(many=True)
+    tariffs = TariffSerializer(many=True)
 
     class Meta(TourSerializer.Meta):
-        fields = TourSerializer.Meta.fields + ['programm']
+        fields = TourSerializer.Meta.fields + ['tariffs', 'programm']

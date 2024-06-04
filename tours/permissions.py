@@ -26,7 +26,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 
 class UserPermission(permissions.BasePermission):
     """Разрешение для ViewSet
-    list: staff 
+    list: Все 
     Create: Все авторизованные
     Retrieve: owner, staff
     Update, Partial update: owner, staff
