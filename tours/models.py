@@ -127,8 +127,9 @@ class Tour(models.Model):
     )
     owner = models.ForeignKey(
         User,
+        related_name='tour_owner',
         verbose_name='Создатель/Организатор',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     photo = models.ImageField(upload_to='tour/%Y/%m/', blank=True)
 

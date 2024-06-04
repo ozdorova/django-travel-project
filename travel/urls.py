@@ -15,19 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-# from django.urls import include, path
-# from rest_framework import routers
-from django.urls import path
+from django.urls import include, path, re_path
+from rest_framework import routers
 
 from tours import views
 
-# router = routers.DefaultRouter()
-# router.register(r'tour', views.TourViewSet, basename='tour')
+router = routers.DefaultRouter()
+router.register(r'tour', views.TourViewSet, basename='tour')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/tour/', views.TourAPIList.as_view()),
-    path('api/v1/tour/<int:pk>/', views.TourAPIUpdate.as_view()),
-    path('api/v1/tourdelete/<int:pk>/', views.TourAPIDestroy.as_view()),
-    # path('api/v1/', include(router.urls)),
+    path('api/v1/', include(router.urls)),
+    path('api/v1/drf-auth/', include('rest_framework.urls')),
+    path('api/v1/auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
+    # path('api/v1/tour/', views.TourAPIList.as_view()),
+    # path('api/v1/tour/<int:pk>/', views.TourAPIUpdate.as_view()),
+    # path('api/v1/tourdelete/<int:pk>/', views.TourAPIDestroy.as_view()),
 ]

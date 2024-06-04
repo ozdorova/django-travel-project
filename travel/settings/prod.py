@@ -1,5 +1,7 @@
 import os
+
 from . import base
+
 # export DJANGO_SETTINGS_MODULE=travel.settings.prod
 
 
@@ -15,6 +17,11 @@ ADMINS = [
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ]
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DATETIME_FORMAT': '%d %B, %Y',
+
+
 }

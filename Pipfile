@@ -10,6 +10,7 @@ django-extensions = "3.2.3"
 ipython = "*"
 djangorestframework = "3.15.1"
 pytils = "0.4.1"
+djoser = "*"
 
 [requires]
 python_version = "3.11"
@@ -20,4 +21,3 @@ python_version = "3.11"
 runserver = 'python manage.py runserver'
 make_migrations = 'python manage.py makemigrations'
 migrate = 'python manage.py migrate'
-
