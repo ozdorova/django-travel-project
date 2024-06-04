@@ -36,7 +36,6 @@ class UserPermission(permissions.BasePermission):
     def has_permission(self, request, view):
         if view.action == 'list':
             return True
-            # return request.user.is_authenticated or request.user.is_staff
         elif view.action == 'create':
             return request.user.is_authenticated
 
