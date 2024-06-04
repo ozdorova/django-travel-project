@@ -1,8 +1,9 @@
 from .base import *
+
 # export DJANGO_SETTINGS_MODULE=travel.settings.dev
 
 DEBUG = True
-print("#"*20 + ' DEBUG=True')
+print("#" * 20 + ' DEBUG=True')
 
 
 ALLOWED_HOSTS = ['*']
@@ -23,4 +24,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DATETIME_FORMAT': '%d %B, %Y',
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
 }

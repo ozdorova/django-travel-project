@@ -35,11 +35,17 @@ class TourTest(TourSetupTestCase):
         # ИСПРАВИТЬ
         stolica, naukograd = Tour.objects.all()
         self.assertEqual(
-            stolica.title, 'Первый наукоград'
+            naukograd.title, 'Первый наукоград'
         )
         self.assertEqual(
-            stolica.tariff.first(), Tariff.objects.get(title='Базовый')
+            stolica.title, 'Москва'
         )
         self.assertEqual(
-            stolica.place, Place.objects.get(city='Обнинск')
+            naukograd.tariff.first(), Tariff.objects.get(title='Базовый')
+        )
+        self.assertEqual(
+            naukograd.place, Place.objects.get(city='Обнинск')
+        )
+        self.assertEqual(
+            stolica.place, Place.objects.get(city='Москва')
         )

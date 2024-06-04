@@ -4,20 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-pillow = "*"
-django-extensions = "*"
+django = "5.0.6"
+pillow = "10.3.0"
+django-extensions = "3.2.3"
 ipython = "*"
-djangorestframework = "*"
-pytils = "*"
+djangorestframework = "3.15.1"
+pytils = "0.4.1"
 
 [requires]
 python_version = "3.11"
 
 [dev-packages]
-pep8 = "*"
-pylint = "*"
-autopep8 = "*"
 
 [scripts]
 runserver = 'python manage.py runserver'

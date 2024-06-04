@@ -1,5 +1,5 @@
 import os
-from .base import *
+from . import base
 # export DJANGO_SETTINGS_MODULE=travel.settings.prod
 
 
