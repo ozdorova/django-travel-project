@@ -18,6 +18,7 @@ class PlaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Place
         fields = [
+            'id',
             'city',
             'region',
             'country',
@@ -25,6 +26,7 @@ class PlaceSerializer(serializers.ModelSerializer):
 
 
 class TariffSerializer(serializers.ModelSerializer):
+    '''Сериализатор тарифов'''
     class Meta:
         model = Tariff
         fields = [
@@ -35,6 +37,7 @@ class TariffSerializer(serializers.ModelSerializer):
 
 
 class ProgrammSerializer(serializers.ModelSerializer):
+    '''Сериализатор программы тура '''
     class Meta:
         model = Programm
         fields = [
@@ -45,15 +48,24 @@ class ProgrammSerializer(serializers.ModelSerializer):
         ]
 
 
-class TourSerializer(serializers.ModelSerializer):
-    places = PlaceSerializer(many=True)
+class TourCreateSerializer(serializers.ModelSerializer):
     owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Tour
+        fields = '__all__'
+
+
+class TourSerializer(serializers.ModelSerializer):
+    '''Сериализатор тура'''
+    places = PlaceSerializer(many=True)
+    # owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Tour
         fields = [
             'id',
-            'owner',
+            # 'owner',
             'title',
             'slug',
             'description',
@@ -63,13 +75,14 @@ class TourSerializer(serializers.ModelSerializer):
             'end_date',
             'is_active',
             'photo',
-            # 'programm',
         ]
 
 
 class TourDetailSerializer(TourSerializer):
-    programm = ProgrammSerializer(many=True)
-    tariffs = TariffSerializer(many=True)
+    '''Сериализатор конретного тура по pk
+    включащий в себя программу тура и тарифы'''
+    programm = ProgrammSerializer(many=True, required=False)
+    tariffs = TariffSerializer(many=True, required=False)
 
     class Meta(TourSerializer.Meta):
-        fields = TourSerializer.Meta.fields + ['tariffs', 'programm']
+        fields = TourSerializer.Meta.fields + ['programm', 'tariffs']

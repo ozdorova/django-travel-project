@@ -12,6 +12,8 @@ djangorestframework = "3.15.1"
 pytils = "0.4.1"
 djoser = "*"
 djangorestframework-simplejwt = "*"
+pytest = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.11"
@@ -22,3 +24,4 @@ python_version = "3.11"
 runserver = 'python manage.py runserver'
 make_migrations = 'python manage.py makemigrations'
 migrate = 'python manage.py migrate'
+test = 'python manage.py test .'

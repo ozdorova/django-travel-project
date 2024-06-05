@@ -3,7 +3,6 @@ from .base import *
 # export DJANGO_SETTINGS_MODULE=travel.settings.dev
 
 DEBUG = True
-print("#" * 20 + ' DEBUG=True')
 
 
 ALLOWED_HOSTS = ['*']

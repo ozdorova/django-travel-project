@@ -1,12 +1,18 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
-from ..models import Tour, Tariff, Place
+
+from ..models import Place, Tariff, Tour
 from ..utils.funcs import get_tz_time
 
 
 class TourSetupTestCase(TestCase):
-    """Создание моделей для тестов"""
+    '''Создание моделей для тестов'''
 
     def setUp(self):
+        User.objects.create_user(
+            username='test',
+            password='test'
+        )
         # Тарифы
         Tariff.objects.create(
             title='Базовый',
@@ -33,18 +39,25 @@ class TourSetupTestCase(TestCase):
         )
 
         # Туры
-        Tour.objects.create(
+        tour_1 = Tour.objects.create(
             title='Столица России',
             description='Описание тура 1',
-            place=place_moscow,
             start_date=get_tz_time('2024-01-01'),
             end_date=get_tz_time('2024-02-02'),
-        ).tariff.set(tariffs)
+            owner=User.objects.get(username='test'),
+        )
+        tour_1.tariffs.set(tariffs)
+        tour_1.places.set([place_moscow])
 
-        Tour.objects.create(
+        tour_2 = Tour.objects.create(
             title='Первый наукоград',
             description='Описание тура 2',
-            place=place_obninsk,
             start_date=get_tz_time('2024-03-03'),
             end_date=get_tz_time('2024-04-04'),
-        ).tariff.set(tariffs)
+            owner=User.objects.get(username='test'),
+        )
+        tour_2.tariffs.set(tariffs)
+        tour_2.places.set([place_obninsk])
+
+        self._naukograd, self._stolica = Tour.objects.all()
+        self._user = User.objects.get(username='test')

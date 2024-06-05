@@ -58,6 +58,7 @@ class TourProgrammInLine(admin.StackedInline):
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
     fields = [
+        'owner',
         'title',
         'description',
         'tariffs',

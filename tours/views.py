@@ -6,7 +6,8 @@ from rest_framework.response import Response
 
 from .models import Tour
 from .permissions import UserPermission
-from .serializers import TourDetailSerializer, TourSerializer
+from .serializers import (TourCreateSerializer, TourDetailSerializer,
+                          TourSerializer)
 
 
 class TourViewSet(mixins.CreateModelMixin,  # Создание
@@ -16,18 +17,24 @@ class TourViewSet(mixins.CreateModelMixin,  # Создание
                   mixins.ListModelMixin,  # Список всех записей
                   viewsets.GenericViewSet):  # viewsets.ModelViewSet
 
-    """ModelViewSet всех доступных туров"""
+    '''ModelViewSet всех доступных туров'''
     queryset = Tour.active_tours.all()
     serializer_class = TourSerializer
     permission_classes = [
         UserPermission,
     ]
 
-    actions = ['retrieve', 'create', 'update']
+    _actions = [
+        'retrieve',
+        # 'create',
+        'update'
+    ]
 
     def get_serializer_class(self):
-        if self.action in self.actions:
+        if self.action in self._actions:
             return TourDetailSerializer
+        elif self.action == 'create':
+            return TourCreateSerializer
         return super().get_serializer_class()
 
     # def get_queryset(self):
@@ -39,7 +46,7 @@ class TourViewSet(mixins.CreateModelMixin,  # Создание
         permission_classes=[IsAuthenticated]
     )
     def cities(self, request):
-        """Маршрут: список городов"""
+        '''Маршрут: список городов'''
         cities = self.get_queryset().values_list(
             'places__city', flat=True
         ).distinct().exclude(places__city='')

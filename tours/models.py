@@ -11,7 +11,7 @@ class PublishedManager(models.Manager):
 
 
 class Tariff(models.Model):
-    """Тарифы проведения тура"""
+    '''Тарифы проведения тура'''
 
     title = models.CharField(
         max_length=50,
@@ -41,7 +41,7 @@ class Tariff(models.Model):
 
 
 class Place(models.Model):
-    """Место, места, область или регион проведения тура"""
+    '''Место, места, область или регион проведения тура'''
 
     # Поля
     city = models.CharField(
@@ -84,10 +84,10 @@ class Place(models.Model):
 
 
 class Tour(models.Model):
-    """Тур"""
+    '''Тур'''
 
     class Status(models.IntegerChoices):
-        """Статус тура"""
+        '''Статус тура'''
 
         DRAFT = (0, 'Не активен')
         PUBLISHED = (1, 'Активен')
@@ -114,11 +114,13 @@ class Tour(models.Model):
     updated = models.DateTimeField(auto_now=True)
     start_date = models.DateTimeField(
         verbose_name='Начало тура',
-        blank=True
+        blank=True,
+        null=True
     )
     end_date = models.DateTimeField(
         verbose_name='Конец тура',
-        blank=True
+        blank=True,
+        null=True
     )
     is_active = models.BigIntegerField(
         default=Status.PUBLISHED,
@@ -159,7 +161,7 @@ class Tour(models.Model):
 
 
 class Programm(models.Model):
-    """Программа проведения тура"""
+    '''Программа проведения тура'''
 
     # Поля
     title = models.CharField(

@@ -1,9 +1,9 @@
-from ..models import Tour, Tariff, Place
+from ..models import Place, Tariff, Tour
 from .setup import TourSetupTestCase
 
 
 class TourTest(TourSetupTestCase):
-    """ Тест модели Tour, с дополнительными моделями Tariff, Place"""
+    ''' Тест модели Tour, с дополнительными моделями Tariff, Place'''
 
     def test_places(self):
         place_moscow = Place.objects.get(city='Москва')
@@ -32,20 +32,22 @@ class TourTest(TourSetupTestCase):
         )
 
     def test_tours(self):
-        # ИСПРАВИТЬ
-        stolica, naukograd = Tour.objects.all()
         self.assertEqual(
-            naukograd.title, 'Первый наукоград'
+            self._naukograd.title, 'Первый наукоград'
         )
         self.assertEqual(
-            stolica.title, 'Москва'
+            self._stolica.title, 'Столица России'
         )
         self.assertEqual(
-            naukograd.tariff.first(), Tariff.objects.get(title='Базовый')
+            self._naukograd.tariffs.first(), Tariff.objects.get(title='Базовый')
         )
-        self.assertEqual(
-            naukograd.place, Place.objects.get(city='Обнинск')
+        self.assertQuerysetEqual(
+            self._naukograd.places.all(),
+            Place.objects.all().filter(city='Обнинск'),
+            transform=lambda x: x
         )
-        self.assertEqual(
-            stolica.place, Place.objects.get(city='Москва')
+        self.assertQuerysetEqual(
+            self._stolica.places.all(),
+            Place.objects.all().filter(city='Москва'),
+            transform=lambda x: x
         )
