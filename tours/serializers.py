@@ -39,7 +39,7 @@ class ProgrammSerializer(serializers.ModelSerializer):
         ]
 
 
-class TourCreateSerializer(serializers.ModelSerializer):
+class TourCreateUpdateSerializer(serializers.ModelSerializer):
     owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:

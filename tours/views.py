@@ -7,16 +7,17 @@ from rest_framework.response import Response
 
 from .models import Tour
 from .permissions import UserPermission
-from .serializers import (TourCreateSerializer, TourDetailSerializer,
+from .serializers import (TourCreateUpdateSerializer, TourDetailSerializer,
                           TourSerializer)
 
 
-class TourViewSet(mixins.CreateModelMixin,  # Создание
-                  mixins.RetrieveModelMixin,  # Выделение
-                  mixins.UpdateModelMixin,  # Обновление
-                  mixins.DestroyModelMixin,  # Удаление
-                  mixins.ListModelMixin,  # Список всех записей
-                  viewsets.GenericViewSet):  # viewsets.ModelViewSet
+class TourViewSet(
+        mixins.CreateModelMixin,  # Создание
+        mixins.RetrieveModelMixin,  # Выделение
+        mixins.UpdateModelMixin,  # Обновление
+        mixins.DestroyModelMixin,  # Удаление
+        mixins.ListModelMixin,  # Список всех записей
+        viewsets.GenericViewSet):  # viewsets.ModelViewSet
 
     '''ModelViewSet всех доступных туров'''
     queryset = Tour.active_tours.all()
@@ -25,17 +26,11 @@ class TourViewSet(mixins.CreateModelMixin,  # Создание
         UserPermission,
     ]
 
-    _actions = [
-        'retrieve',
-        # 'create',
-        'update'
-    ]
-
     def get_serializer_class(self):
-        if self.action in self._actions:
+        if self.action == 'retrieve':
             return TourDetailSerializer
-        elif self.action == 'create':
-            return TourCreateSerializer
+        elif self.action in ['create', 'update', 'partial_update']:
+            return TourCreateUpdateSerializer
         return super().get_serializer_class()
 
     # def get_queryset(self):

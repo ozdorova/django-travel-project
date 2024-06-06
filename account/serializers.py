@@ -21,6 +21,14 @@ class ToursOwnByUserSerializer(serializers.ModelSerializer):
         ]
 
 
+class UserProfileUpdateSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
+
+
 class UserProfileSerializer(serializers.ModelSerializer):
     '''Сериализатор пользователя'''
     url = serializers.HyperlinkedIdentityField(
