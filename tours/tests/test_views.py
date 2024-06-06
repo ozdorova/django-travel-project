@@ -5,16 +5,17 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from ..models import Tour
-from .setup import TourSetupTestCase
+from .setup import TourTestSetUpMixin
 
 
-class TestListTourViewSet(APITestCase, TourSetupTestCase):
+class TestListTourViewSet(TourTestSetUpMixin, APITestCase):
 
     def setUp(self):
         super().setUp()
         self.client.login(username='test', password='test')
 
     def test_list_tours(self):
+        '''Получение списка туров'''
         # пагинация включена
         url = reverse('tour-list')
         response = self.client.get(url)
@@ -25,6 +26,7 @@ class TestListTourViewSet(APITestCase, TourSetupTestCase):
 class TestDetailTourViewSet(TestListTourViewSet):
 
     def test_create_tour(self):
+        '''Создание нового тура через post'''
         url = reverse('tour-list')
         data = {
             'title': 'Новый тур',
@@ -40,15 +42,16 @@ class TestDetailTourViewSet(TestListTourViewSet):
         self.assertTrue(Tour.objects.filter(title='Новый тур').exists())
 
     def test_retrieve_tour(self):
+        '''Получение информации о туре по pk'''
         self.test_create_tour()
         tour = Tour.objects.get(title='Новый тур')
-        print(tour)
         url = reverse('tour-detail', args=[tour.id])
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['title'], 'Новый тур')
 
     def test_update_tour(self):
+        '''Обновление информации о туре'''
         self.test_create_tour()
         tour = Tour.objects.get(title='Новый тур')
         url = reverse('tour-detail', args=[tour.id])

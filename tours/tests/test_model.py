@@ -1,8 +1,10 @@
-from ..models import Place, Tariff, Tour
-from .setup import TourSetupTestCase
+from django.test import TestCase
+
+from ..models import Place, Tariff
+from .setup import TourTestSetUpMixin
 
 
-class TourTest(TourSetupTestCase):
+class TestTourAndRelatedModels(TourTestSetUpMixin, TestCase):
     ''' Тест модели Tour, с дополнительными моделями Tariff, Place'''
 
     def test_places(self):

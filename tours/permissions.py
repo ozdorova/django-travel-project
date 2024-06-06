@@ -1,13 +1,12 @@
-"""Кастомные разрешения"""
+'''Кастомные разрешения'''
 
-from logging import warn
 
 from rest_framework import permissions
 
 
 class IsAdminOrReadOnly(permissions.BasePermission):
-    """Чтение для всех пользователей,
-    редактирование только для администратора"""
+    '''Чтение для всех пользователей,
+    редактирование только для администратора'''
 
     def has_permission(self, request, view):
         if request.method in permissions.SAFE_METHODS:
@@ -16,7 +15,7 @@ class IsAdminOrReadOnly(permissions.BasePermission):
 
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
-    """Редактирование только для организатора тура"""
+    '''Редактирование только для организатора тура'''
 
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
@@ -25,13 +24,13 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 
 
 class UserPermission(permissions.BasePermission):
-    """Разрешение для ViewSet
+    '''Разрешение для ViewSet
     list: Все 
     Create: Все авторизованные
     Retrieve: owner, staff
     Update, Partial update: owner, staff
     Destroy: admin
-    """
+    '''
 
     def has_permission(self, request, view):
         if view.action == 'list':

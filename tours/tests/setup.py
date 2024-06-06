@@ -1,11 +1,10 @@
 from django.contrib.auth.models import User
-from django.test import TestCase
 
 from ..models import Place, Tariff, Tour
 from ..utils.funcs import get_tz_time
 
 
-class TourSetupTestCase(TestCase):
+class TourTestSetUpMixin:
     '''Создание моделей для тестов'''
 
     def setUp(self):
