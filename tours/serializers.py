@@ -5,15 +5,6 @@ from rest_framework import serializers
 from .models import Place, Programm, Tariff, Tour
 
 
-class OwnerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            'id',
-            'username',
-        ]
-
-
 class PlaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Place
@@ -59,13 +50,18 @@ class TourCreateSerializer(serializers.ModelSerializer):
 class TourSerializer(serializers.ModelSerializer):
     '''Сериализатор тура'''
     places = PlaceSerializer(many=True)
-    # owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    owner = serializers.ReadOnlyField(source='owner.username')
+    url = serializers.HyperlinkedIdentityField(
+        view_name='tour-detail',
+        lookup_field='pk'
+    )
 
     class Meta:
         model = Tour
         fields = [
             'id',
-            # 'owner',
+            'url',
+            'owner',
             'title',
             'slug',
             'description',

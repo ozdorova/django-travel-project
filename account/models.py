@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from tours.models import Tour
+
 
 class UserProfile(models.Model):
     '''Профиль пользователя'''
@@ -19,9 +21,6 @@ class UserProfile(models.Model):
         blank=True,
         verbose_name='Место проживания',
     )
-    date_of_join = models.DateField(
-        auto_now_add=True,
-    )
     date_of_birth = models.DateField(
         null=True,
         blank=True,
@@ -30,3 +29,6 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def get_tours_own(self):
+        return Tour.objects.filter(owner=self.user)
