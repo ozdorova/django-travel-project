@@ -14,6 +14,7 @@ djoser = "*"
 djangorestframework-simplejwt = "*"
 pytest = "*"
 pytest-django = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.11"
@@ -22,6 +23,6 @@ python_version = "3.11"
 
 [scripts]
 runserver = 'python ./backend/manage.py runserver'
-make_migrations = 'python .backend/manage.py makemigrations'
-migrate = 'python .backend/manage.py migrate'
-test = 'python .backend/manage.py test .'
+make_migrations = 'python ./backend/manage.py makemigrations'
+migrate = 'python ./backend/manage.py migrate'
+test = 'python ./backend/manage.py test .'
