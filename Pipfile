@@ -21,7 +21,7 @@ python_version = "3.11"
 [dev-packages]
 
 [scripts]
-runserver = 'python manage.py runserver'
-make_migrations = 'python manage.py makemigrations'
-migrate = 'python manage.py migrate'
-test = 'python manage.py test .'
+runserver = 'python ./backend/manage.py runserver'
+make_migrations = 'python .backend/manage.py makemigrations'
+migrate = 'python .backend/manage.py migrate'
+test = 'python .backend/manage.py test .'

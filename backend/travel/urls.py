@@ -3,7 +3,7 @@ from django.urls import include, path, re_path
 from rest_framework import routers
 
 from account.views import UserProfileViewSet
-from tours.views import TourViewSet, travel_app
+from tours.views import TourViewSet
 
 # from rest_framework_simplejwt.views import (TokenObtainPairView,
 #                                             TokenRefreshView, TokenVerifyView)
@@ -25,7 +25,6 @@ urlpatterns = [
     re_path(r'^auth/', include('djoser.urls.jwt')),
     # jwt/ (create, refresh, verify)
 ]
-urlpatterns += [path('', travel_app)]
 
 # simplejwt
 # path(

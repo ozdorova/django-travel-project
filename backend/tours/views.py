@@ -1,5 +1,3 @@
-
-from django.shortcuts import render
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -47,7 +45,3 @@ class TourViewSet(
             'places__city', flat=True
         ).distinct().exclude(places__city='')
         return Response(cities)
-
-
-def travel_app(request):
-    return render(request, 'main_app.html')
