@@ -1,18 +1,26 @@
+<!-- список туров -->
 <template>
-  <div>
-    <div><strong>Описание: </strong> Список туров</div>
-    <div class="post" v-for:="tour in tours">
-      <div><strong>Название: </strong> {{ tour.title }}</div>
-      <div><strong>Организатор</strong> {{ tour.owner }}</div>
-      <div><strong>Начало</strong> {{ tour.start_date }}</div>
-      <div><strong>Конец</strong> {{ tour.end_date }}</div>
-    </div>
+  <div v-if="tours.length > 0">
+    <!-- <div v-show="tours.length > 0"> -->
+
+    <div><h3>Список туров</h3></div>
+    <tour-item
+      v-for="tour in tours"
+      :tour="tour"
+      :key="tour.id"
+      @remove="$emit('remove', tour)"
+    />
   </div>
+  <h2 v-else style="color: red">Список пуст</h2>
+  <!-- <h2 v-show="tours.length === 0" style="color: red">Список пуст</h2> -->
 </template>
 
 <script>
+import TourItem from "@/components/TourItem";
 export default {
+  components: { TourItem },
   props: {
+    // параметры компонента TourList, которые передают внутрь компонента из App
     tours: {
       type: Array,
       required: true,
@@ -21,10 +29,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.post {
-  padding: 15px;
-  border: 2px solid teal;
-  margin-top: 15px;
-}
-</style>
+<style scoped></style>

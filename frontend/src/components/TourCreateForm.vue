@@ -2,36 +2,52 @@
   <div>
     <form @submit.prevent>
       <h4>Создание тура (Тест, в бд не заносится)</h4>
-      <input
+      <my-input
         v-model="tourForm.title"
-        type="text"
+        :in_type="'text'"
         placeholder="Название"
-        class="input"
       />
-      <input
+      <my-input
         v-model="tourForm.owner"
-        type="text"
+        :in_type="'text'"
         placeholder="Организатор"
-        class="input"
       />
-      <input v-model="tourForm.start_date" type="date" class="input" />
-      <input v-model="tourForm.end_date" type="date" class="input" />
-      <button class="btn">Создать</button>
+      <my-input v-model="tourForm.start_date" :in_type="'date'" />
+      <my-input v-model="tourForm.end_date" :in_type="'date'" />
+      <my-button
+        @click="createTour"
+        style="align-self: flex-end; margin-top: 15px"
+        >Создать</my-button
+      >
     </form>
   </div>
 </template>
 
 <script>
+import moment from "moment";
 export default {
   data() {
     return {
       tourForm: {
         title: "",
         owner: "",
-        start_date: Date(),
-        end_date: Date(),
+        start_date: moment().format("YYYY-MM-DD"),
+        end_date: moment().add(14, "days").format("YYYY-MM-DD"),
       },
     };
+  },
+  methods: {
+    createTour() {
+      this.tourForm.id = Date.now();
+      // передача аргументы в функцию слушатель в App
+      this.$emit("create", this.tourForm);
+      this.tourForm = {
+        title: "",
+        owner: "",
+        start_date: moment().format("YYYY-MM-DD"),
+        end_date: moment().add(14, "days").format("YYYY-MM-DD"),
+      };
+    },
   },
 };
 </script>
@@ -40,20 +56,5 @@ export default {
 form {
   display: flex;
   flex-direction: column;
-}
-
-.input {
-  width: 100%;
-  border: 2px solid teal;
-  padding: 10px 15px;
-  margin-top: 15px;
-}
-.btn {
-  margin-top: 15px;
-  align-self: flex-end;
-  padding: 10px 15px;
-  background: none;
-  color: teal;
-  border: 1px solid teal;
 }
 </style>

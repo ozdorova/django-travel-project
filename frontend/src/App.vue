@@ -1,7 +1,7 @@
 <template>
   <div class="app">
-    <tour-create-form />
-    <tour-list :tours="tours" />
+    <tour-create-form @create="createTour" />
+    <tour-list :tours="tours" @remove="removeTour" />
   </div>
 </template>
 
@@ -19,32 +19,21 @@ export default defineComponent({
   data() {
     return {
       tours: [],
-      tour: {},
-      formTitle: "",
-      formOwner: "",
-      formStartDate: "",
-      formEndDate: "",
     };
   },
   methods: {
     async getTours() {
+      // Получение API
       await HTTP.get("/tour/").then((response) => {
         this.tours = response.data;
       });
     },
-    createTour() {
-      const newTour = {
-        id: Date.now(),
-        title: this.formTitle,
-        owner: this.formOwner,
-        start_date: this.formStartDate,
-        end_date: this.formEndDate,
-      };
-      this.tours.push(newTour);
-      this.formTitle = "";
-      this.formOwner = "";
-      this.formStartDate = "";
-      this.formEndDate = "";
+    createTour(tourForm) {
+      // Обработка формы TourCreateForm
+      this.tours.push(tourForm);
+    },
+    removeTour(tour) {
+      this.tours = this.tours.filter((t) => t.id !== tour.id);
     },
   },
   created() {
