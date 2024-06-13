@@ -58,7 +58,8 @@ class TestDetailTourViewSet(TestListTourViewSet):
         data = {'title': 'Новый обновленный тур', 'slug': 'fresh-new-tour'}
         response = self.client.patch(url, data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(Tour.objects.get(id=tour.id).title, 'Новый обновленный тур')
+        self.assertEqual(
+            Tour.objects.get(id=tour.id).title, 'Новый обновленный тур')
 
     def test_delete_tour(self):
         '''Удаление доступно только админу'''

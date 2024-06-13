@@ -41,7 +41,8 @@ class TestTourAndRelatedModels(TourTestSetUpMixin, TestCase):
             self._stolica.title, 'Столица России'
         )
         self.assertEqual(
-            self._naukograd.tariffs.first(), Tariff.objects.get(title='Базовый')
+            self._naukograd.tariffs.first(),
+            Tariff.objects.get(title='Базовый')
         )
         self.assertQuerysetEqual(
             self._naukograd.places.all(),
