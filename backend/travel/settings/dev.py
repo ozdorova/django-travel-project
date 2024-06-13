@@ -36,6 +36,8 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    # swagger
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     # Pagination
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     # 'PAGE_SIZE': 6,
@@ -46,3 +48,14 @@ REST_FRAMEWORK = {
 # CORS_ALLOWED_ORIGINS = ["https://example.com", "http://localhost:3000"]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Travel API',
+    'DESCRIPTION': 'API documentation for Travel',
+    'VERSION': 'v1',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+}

@@ -1,24 +1,9 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from rest_framework.reverse import reverse
-
-from tours.models import Tour
 
 from .models import UserProfile
 
-
-class ToursOwnByUserSerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-        view_name='tour-detail',
-        lookup_field='pk'
-    )
-
-    class Meta:
-        model = Tour
-        fields = [
-            'id',
-            'url',
-            'title'
-        ]
+User = get_user_model
 
 
 class UserProfileUpdateSerializer(serializers.ModelSerializer):
@@ -40,7 +25,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         source='user.get_full_name', read_only=True)
     email = serializers.CharField(
         source='user.email', read_only=True)
-    tours = ToursOwnByUserSerializer(source='user.tour_owner', many=True)
 
     class Meta:
         model = UserProfile
